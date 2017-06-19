@@ -3,7 +3,8 @@ import collections
 with open("data/original.csv", "r") as file:
     data = file.read()
 
-go_from_year = 1850
+go_from_year = 1950
+go_to_year = 2015
 
 new_csv = ""
 lines = data.split("\n")
@@ -18,7 +19,7 @@ for line in lines[1:]:
         year = date[0]
         month = date[1]
         day = date[2]
-        if(int(year) >= go_from_year):
+        if(int(year) >= go_from_year) and (int(year) <= go_to_year):
             if not year in yearsdata:
                 yearsdata[year] = {}
 
@@ -36,5 +37,8 @@ for year in yearsdata.values():
             num_months_recorded += 1
     new_csv += str(x_year) + "," + str(average_yearly_temp / num_months_recorded) + "\n"
     x_year += 1
-with open('data/data.csv', 'w') as file:
+
+
+file_name = "data/data-" + str(go_from_year) + "-" + str(go_to_year) + ".csv"
+with open(file_name, 'w') as file:
     file.write(new_csv)
