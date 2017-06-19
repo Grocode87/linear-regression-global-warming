@@ -1,6 +1,8 @@
 # linear-regression-global-warming
 A linear regression model made from scratch in python with numpy. Uses gradient descent to fit a line through the yearly average earth temperatures to see global warming.
 
+*This README is not 100% done, I will continue adding more documentation and content hopefully*
+
 ## Data
 The most important part of machine learning is the data. I am using monthly average global temperatures since 1850 from a kaggle dataset by Berkeley Earth. The dataset can be found [here](https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data)
 
@@ -119,12 +121,13 @@ while not two_reached:
             year += 1
 ```
 
-The code above keeps going until the total_gained integer gets above 2 degrees. The current temperature increase from 1880 to 2012 is 0.85 degrees celcius, according to the UN’s Intergovernmental Panel on Climate Change. It is said that by 2100, the temperature increase could be above 2 degrees, some even saying it could be above 3 degrees. Which would have devestating effects on our planet.
+The code above keeps going until the total_gained integer gets above 2 degrees. The current temperature increase from 1880 to 2012 is 0.85 degrees celcius, according to the UN’s Intergovernmental Panel on Climate Change. It is said that by 2100, the temperature increase could be above 2 degrees, some even say it could be above 3 degrees. Which would have devestating effects on our planet.
 
    `A temperature increase of 2 degress celcius will be reached in the year 2046`
+   
 The results of my prediction say that we will reach a temperaturee increase of over 2 degrees by the year 2046, which I would say is a pretty accurate prediction.
 
-## Conclusion
-My hope is that the people of earth realize the risk global warming is putting on earth before its too late. Hopefully the temperature increase will never get above 2 degrees, because it would have devestating effects. Everything I said above is a prediction made by a 15 year old who is literally just getting into machine learning, for all I know, my data could be miles off, and it should definitely be taken with a few grains of salt. I did all of this for fun and I hope you enjoyed it. :)
+## Extra
+Everything I said above should be taken with a grain of salt, I'm a 15 year old programmer who is just getting into machine learning, so my data could be pretty off.
 
 
