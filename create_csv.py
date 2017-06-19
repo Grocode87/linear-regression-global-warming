@@ -3,7 +3,7 @@ import collections
 with open("data/original.csv", "r") as file:
     data = file.read()
 
-go_from_year = 1850
+go_from_year = 1750
 
 new_csv = ""
 lines = data.split("\n")
@@ -18,6 +18,7 @@ for line in lines[1:]:
         year = date[0]
         month = date[1]
         day = date[2]
+
         if(int(year) >= go_from_year):
             if not year in yearsdata:
                 yearsdata[year] = {}
