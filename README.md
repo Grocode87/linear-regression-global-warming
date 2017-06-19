@@ -65,15 +65,17 @@ new_m = m_current - (learningRate * m_gradient)
 
 ## Results
 After 30 iterations, the b and m values it came up with are:
-⋅⋅1. B: 7.3673
-⋅⋅1. M: 0.0085
+⋅⋅* B: 7.3673
+⋅⋅* M: 0.0085
 
 After plotting the points and line, this is what it looks like:
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/Grocode87/linear-regression-global-warming/blob/master/images/1850-2015-gw.png)
+
 Now, I'm definitely not a scientist, I haven't even graduated high school yet. But the graph above makes me pretty certain that global warming is in fact real.
 
 After graphing the cost function
-[]
+![alt text](https://github.com/Grocode87/linear-regression-global-warming/blob/master/images/cost_1.png)
+
 You can see that the learning rate could probably be a little higher, but its fine for now.
 
 To see the increase in temperature from 1850 to today more clearly, I can do a little bit of math.
@@ -94,4 +96,5 @@ By fitting a line to 50 year time slots, you are potentianlly removing some accu
 1. data-1850-1900.csv
 2. data-1900-1950.csv
 3. data-1950-2015.csv
+
 
