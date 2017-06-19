@@ -65,15 +65,17 @@ new_m = m_current - (learningRate * m_gradient)
 
 ## Results
 After 30 iterations, the b and m values it came up with are:
-⋅⋅1. B: 7.3673
-⋅⋅1. M: 0.0085
+⋅⋅* B: 7.3673
+⋅⋅* M: 0.0085
 
 After plotting the points and line, this is what it looks like:
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/Grocode87/linear-regression-global-warming/blob/master/images/1850-2015-gw.png)
+
 Now, I'm definitely not a scientist, I haven't even graduated high school yet. But the graph above makes me pretty certain that global warming is in fact real.
 
 After graphing the cost function
-[]
+![alt text](https://github.com/Grocode87/linear-regression-global-warming/blob/master/images/cost_1.png)
+
 You can see that the learning rate could probably be a little higher, but its fine for now.
 
 To see the increase in temperature from 1850 to today more clearly, I can do a little bit of math.
@@ -87,11 +89,42 @@ yearly_increase = temp_increase / 166 # The total temperature increase by the nu
 This gives me 0.0085, which means that the yearly temperature increase is 0.0085°C.
 
 ## More Results
-What we did was cool, but its not completely accurate. In the original chart, you can see that as the years go by, the year temperature difference gets bigger and bigger. A linear model is not perfect for this because it cannot make a curved line, but there is a workaround we can do.
+This is already pretty cool, but there is an issue with it. If you look at the original chart, you can see that the yearly temperature goes up more and more, so a straight line is not the best thing.  A simple fixt is to use the temperatures rom the last 50 years instead of the last 150 years, this introduces a bit more noise, which could take away from the accuracy, but overall it will give a more relevant, accurate result.
 
-By fitting a line to 50 year time slots, you are potentianlly removing some accuracy because you are using less data, which means more noise. But it will also make a line that is more fit to a certain time period. So, to do this I created another file called `create_csv_timerange.py`. This file is similar to create CSV but has an extra parameter called `go_to_year`. By playing around with go_from year and go_to_year, I created a few data files.
+To start I need to make the new data, so I will edit the `create_csv.py` file to give me data from the last 50 years.
+```python
+go_from_year = 1965
+```
+Now, after I run that I get a new file called `data-50years.csv`, which I can plug into the linear regression.
 
-1. data-1850-1900.csv
-2. data-1900-1950.csv
-3. data-1950-2015.csv
+The results from this are quite a bit different, the yearly increase went from 0.0085 all the way to 0.0247, Which is a huge increase.
+
+![alt text](https://github.com/Grocode87/linear-regression-global-warming/blob/master/images/50-years-gw.png)
+
+## A Little Predicting
+Up until now, I have not done anything past the recorded data, but if I have the mx+b for temperature increase, I may as well see when the temperature increase will get above 2 degrees celcius.
+
+From the original model, the average temperature in 1750 is 7.976C. And the temperature in 2015 is 9.182. So that is a temperature increase of 1.206. Now, I'm going to use the 50 year model to predict how long it'll take to get the remaining 0.794 degrees.
+
+```python
+while not two_reached:
+        while not two_reached:
+        index += 1
+        temp = m*(50+index) + b
+        total_gained = temp - 7.976;
+
+        if total_gained >= 2:
+            two_reached = True
+        else:
+            year += 1
+```
+
+The code above keeps going until the total_gained integer gets above 2 degrees. The current temperature increase from 1880 to 2012 is 0.85 degrees celcius, according to the UN’s Intergovernmental Panel on Climate Change. It is said that by 2100, the temperature increase could be above 2 degrees, some even saying it could be above 3 degrees. Which would have devestating effects on our planet.
+
+   `A temperature increase of 2 degress celcius will be reached in the year 2046`
+The results of my prediction say that we will reach a temperaturee increase of over 2 degrees by the year 2046, which I would say is a pretty accurate prediction.
+
+## Conclusion
+My hope is that the people of earth realize the risk global warming is putting on earth before its too late. Hopefully the temperature increase will never get above 2 degrees, because it would have devestating effects. Everything I said above is a prediction made by a 15 year old who is literally just getting into machine learning, for all I know, my data could be miles off, and it should definitely be taken with a few grains of salt. I did all of this for fun and I hope you enjoyed it. :)
+
 
