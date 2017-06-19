@@ -154,7 +154,7 @@ def fifty_year_regression():
 
 # The starting point for the linear regression
 def run():
-   #large_scale_regression()
+   large_scale_regression()
    fifty_year_regression()
     
 
