@@ -3,7 +3,7 @@ import collections
 with open("data/original.csv", "r") as file:
     data = file.read()
 
-go_from_year = 1750
+go_from_year = 1850
 
 new_csv = ""
 lines = data.split("\n")

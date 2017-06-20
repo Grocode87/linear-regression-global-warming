@@ -27,7 +27,7 @@ def step_gradient(b_current, m_current, points, learningRate):
         b_gradient += -(2/N) * (y - ((m_current * x) + b_current)) # Calculate the b gradient
         m_gradient += -(2/N) * x * (y - ((m_current * x) + b_current)) # Calculate the m gradient
 
-    new_b = b_current - ((learningRate * 3) * b_gradient) # Create the new b value, the learning rate in multiplied by two to train the model faster
+    new_b = b_current - ((learningRate * 6) * b_gradient) # Create the new b value, the learning rate in multiplied by two to train the model faster
     new_m = m_current - (learningRate * m_gradient) # Create the new m value
     return [new_b, new_m]
 
