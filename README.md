@@ -86,7 +86,7 @@ The plotted points and best fit line are pretty interesting, you can see that th
 After graphing the cost function
 ![alt text](https://github.com/Grocode87/linear-regression-global-warming/blob/master/images/cost_1.png)
 
-You can see that the learning rate could probably be a little higher, but its fine for now.
+You can see that the learning rate is good.
 
 To see the increase in temperature from 1850 to today more clearly, I can do a little bit of math.
 ```python
