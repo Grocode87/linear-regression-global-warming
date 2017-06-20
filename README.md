@@ -1,5 +1,5 @@
 # linear-regression-global-warming
-A linear regression model made from scratch in python with numpy. Uses gradient descent to fit a line through the yearly average earth temperatures to visualize global warming.
+A linear regression model made from scratch in python with numpy. Uses gradient descent to fit a line through the yearly average earth temperatures to visualize global warming and predict when the temperature increase will get over 2 degrees.
 
 This is my entry to the coding challenge from Intro to The Math of Intelligence by Siraj Raval on Youtube.
 https://github.com/llSourcell/Intro_to_the_Math_of_intelligence
@@ -9,6 +9,8 @@ To use, just run `linear_regression.csv`. If for some reason the generated files
 
 ## Data
 The most important part of machine learning is the data. I am using monthly average global temperatures since 1850 from a kaggle dataset by Berkeley Earth. The dataset can be found [here](https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data)
+
+*Note: All temperatures are in Celcius
 
 ## Processing the Data
 The original CSV `original.csv` contains far more data then I need to train. So `create_csv.py` takes in the original CSV and outputs a CSV file. The edited CSV file has the date starting from 1, which is the the first year, to the end year. The start and end years are included in the top of the CSV file.
@@ -67,20 +69,16 @@ b, m, cost_h = gradient_descent_runner(points, initial_b, initial_m, learning_ra
 ```
 This function runs gradient descent for num_iterations and will return the optimal b and m values for the set of points. It also returns a list of every cost from iteration 1 - num_iterations.
 
-I should mention here that the gradient descent function updates b three times as fast as m. This is probably not optimal for most cases, but I found that in this case, it makes gradient descent finish faster.
+I should mention here that the gradient descent function updates b six times as fast as m. This is probably not optimal for most cases, but I found that in this case, it makes gradient descent finish faster.
 ```python
-new_b = b_current - ((learningRate * 3) * b_gradient)
+new_b = b_current - ((learningRate * 6) * b_gradient)
 new_m = m_current - (learningRate * m_gradient)
 ```
 
-The gradient descent function and squared error cost function are nothing special, so I wont talk about those.
+The gradient descent function and squared error function are nothing special, so I wont talk about those.
 
 ## Results
-After 30 iterations, the b and m values it came up with are:
-⋅⋅* B: 7.3673
-⋅⋅* M: 0.0085
-
-After plotting the points and line, this is what it looks like:
+AFter 50,000 iterations, I can plot the points and the best fit line.
 ![alt text](https://github.com/Grocode87/linear-regression-global-warming/blob/master/images/1850-2015-gw.png)
 
 The plotted points and best fit line are pretty interesting, you can see that the average temperature has climbed significantly from 1850 to 2015.
@@ -98,7 +96,7 @@ end_temp = (m * 166) + b # Get the temperature in the last year (2015)
 temp_increase = end_temp - start_temp # Get the total temperature increase from the first year to the last
 yearly_increase = temp_increase / 166 # The total temperature increase by the number of years, to find the yearly temp increase
 ```
-This gives me 0.0085, which means that the yearly temperature increase is 0.0085°C.
+This gives me 0.0084, which means that the yearly temperature increase is 0.0084°C.
 
 ## More Results
 This is already pretty cool, but there is an issue with it. If you look at the original chart, you can see that the yearly temperature goes up more and more, so a straight line is not the best thing.  A simple fix is to use the temperatures from the last 50 years instead of the last 150 years, this introduces a bit more noise, which could take away from the accuracy, but overall it will give a more relevant, accurate result.
@@ -109,7 +107,7 @@ go_from_year = 1965
 ```
 Now, after I run that I get a new file called `data-50years.csv`, which I can plug into the linear regression.
 
-The results from this are quite a bit different, the yearly increase went from 0.0085 all the way to 0.0247, Which is a huge increase.
+The results from this are quite a bit different, the yearly increase went from 0.0084 all the way to 0.0247, Which is a huge increase.
 
 ![alt text](https://github.com/Grocode87/linear-regression-global-warming/blob/master/images/50-years-gw.png)
 
